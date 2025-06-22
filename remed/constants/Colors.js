@@ -11,7 +11,7 @@ export const Colors = {
     border: '#E0E0E0',           
     title: '#2C2C2C',             
     text: '#7A7A7A',              
-    placeholder: '#9CA3AF',       
+    placeholder: '#2C2C2C',       
     inputBackground: '#F2F2F2',   
     icon: '#BDBDBD',              
     shadow: 'rgba(0, 0, 0, 0.05)' 
@@ -24,7 +24,7 @@ export const Colors = {
     border: '#2B3A45',           
     title: '#F2F2F2',             
     text: '#AAB8C2',              
-    placeholder: '#9CA3AF',       
+    placeholder: '#F2F2F2',       
     inputBackground: '#2B3A45',   
     icon: '#6B7A89',              
     shadow: 'rgba(0, 0, 0, 0.4)'  
