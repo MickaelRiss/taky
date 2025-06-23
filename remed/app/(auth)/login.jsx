@@ -1,5 +1,6 @@
 import { StyleSheet, TouchableWithoutFeedback, Keyboard, Text, View, useColorScheme } from "react-native"
 import { useState } from "react"
+import { Link } from "expo-router"
 
 import { Colors } from '../../constants/Colors'
 import ThemedLogo from "../../components/ThemedLogo"
@@ -95,15 +96,17 @@ const Login = () => {
             </View>
             <Spacer height={30}/>
 
-            <ThemedButton style={{ 
-                backgroundColor: theme.background,
-                borderWidth: 1,
-                borderColor: themePrimary,
-            }}>
-                <Text style={{ color: themePrimary, textAlign: 'center', fontWeight: 'semi-bold'}}>
-                    Register
-                </Text>
-            </ThemedButton>
+            <Link href='/register' asChild>
+                <ThemedButton style={{ 
+                    backgroundColor: theme.background,
+                    borderWidth: 1,
+                    borderColor: themePrimary,
+                }}>
+                    <Text style={{ color: themePrimary, textAlign: 'center', fontWeight: 'semi-bold'}}>
+                        Register
+                    </Text>
+                </ThemedButton>
+            </Link>
         </ThemedView>
     </TouchableWithoutFeedback>
   )
