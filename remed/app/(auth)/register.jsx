@@ -9,6 +9,7 @@ import ThemedText from "../../components/ThemedText"
 import Spacer from "../../components/Spacer"
 import ThemedInput from "../../components/ThemedInput"
 import ThemedButton from "../../components/ThemedButton"
+import { useUser } from "../../hooks/useUser"
 
 const Register = () => {
     const colorScheme = useColorScheme()
@@ -19,12 +20,15 @@ const Register = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(null)
+    const { user, register } = useUser()
 
     const handleSubmit = async () => {
         setError(null)
 
         try {
             console.log('Hello from submit')
+            await register(email, password)
+            console.log('Current user is: ', user)
         } catch (error) {
             console.log('My error message: ', error.message)
             setError(error.message)
@@ -78,13 +82,13 @@ const Register = () => {
             <ThemedInput 
                 placeholder='Password'
                 style={{}}
-                onChange={setPassword}
+                onChangeText={setPassword}
                 value={password}
                 secureTextEntry 
             />
             <Spacer height={14}/>
 
-            <ThemedButton>
+            <ThemedButton onPress={handleSubmit}>
                 <Text style={{ color: '#F2F2F2', textAlign: 'center', fontWeight: 'semi-bold'}}>
                     Sign up
                 </Text>

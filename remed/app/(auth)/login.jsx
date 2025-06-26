@@ -1,8 +1,8 @@
-import { StyleSheet, TouchableWithoutFeedback, Keyboard, Text, View, useColorScheme } from "react-native"
+import { StyleSheet, TouchableWithoutFeedback, Keyboard, Text, View, useColorScheme, Alert } from "react-native"
 import { useState } from "react"
 import { Link } from "expo-router"
-
 import { Colors } from '../../constants/Colors'
+import { useUser } from '../../hooks/useUser'
 import ThemedLogo from "../../components/ThemedLogo"
 import ThemedView from "../../components/ThemedView"
 import ThemedText from "../../components/ThemedText"
@@ -17,17 +17,18 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(null)
+    const { user, login } = useUser()
 
-    const handleSubmit = async () => {
+    const handleLogin = async () => {
         setError(null)
 
         try {
-            console.log('Hello from submit')
+            console.log('hello from submit')
+            await login(email, password)
+            console.log('Current user is: ', user)
         } catch (error) {
-            console.log('My error message: ', error.message)
             setError(error.message)
         }
-
     }
 
     return (
@@ -60,7 +61,7 @@ const Login = () => {
             />
             <Spacer height={14}/>
 
-            <ThemedButton>
+            <ThemedButton onPress={handleLogin}>
                 <Text style={{ color: '#F2F2F2', textAlign: 'center', fontWeight: 'semi-bold'}}>
                     Login
                 </Text>
@@ -98,10 +99,11 @@ const Login = () => {
 
             <Link href='/register' asChild>
                 <ThemedButton style={{ 
-                    backgroundColor: theme.background,
-                    borderWidth: 1,
-                    borderColor: themePrimary,
-                }}>
+                        backgroundColor: theme.background,
+                        borderWidth: 1,
+                        borderColor: themePrimary,
+                    }}
+                >
                     <Text style={{ color: themePrimary, textAlign: 'center', fontWeight: 'semi-bold'}}>
                         Register
                     </Text>
