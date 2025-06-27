@@ -3,13 +3,13 @@ import { useState } from "react"
 import { Link } from 'expo-router'
 
 import { Colors } from '../../constants/Colors'
+import { useUser } from "../../hooks/useUser"
 import ThemedLogo from "../../components/ThemedLogo"
 import ThemedView from "../../components/ThemedView"
 import ThemedText from "../../components/ThemedText"
 import Spacer from "../../components/Spacer"
 import ThemedInput from "../../components/ThemedInput"
 import ThemedButton from "../../components/ThemedButton"
-import { useUser } from "../../hooks/useUser"
 
 const Register = () => {
     const colorScheme = useColorScheme()

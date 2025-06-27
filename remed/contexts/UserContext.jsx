@@ -32,12 +32,14 @@ export const UserProvider = ({ children }) => {
             email: email,
             password: password,
         })
-        if (error) throw new Error(error.message)
-        console.log('Je suis connecte')
-        setUser(data.session?.user)
+
+        if (error) throw Error(error.message)
+
+        setUser(data.user)
         setSession(data.session)
-        router.replace('/')
+        router.replace('/(dashboard)/home')
     }
+
 
     async function register(email, password) {
         const { data, error } = await supabase.auth.signUp({
@@ -46,7 +48,15 @@ export const UserProvider = ({ children }) => {
         })
         if (error) throw Error(error.message)
         console.log('Je suis sauvegarde en DB')
-        await login(email, password)
+        console.log('ma Data:', data)
+        // await login(email, password)
+    }
+
+    async function logout() {
+        const { error } = await supabase.auth.signOut()
+        if (error) throw Error(error.message)
+        console.log('User disconnected')
+        router.replace('/')
     }
 
     const value = {
@@ -54,7 +64,8 @@ export const UserProvider = ({ children }) => {
         session,
         authChecked,
         login,
-        register
+        register,
+        logout
     }
 
     return (

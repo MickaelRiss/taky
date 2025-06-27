@@ -3,7 +3,6 @@ import { StatusBar } from 'expo-status-bar'
 import { Stack } from 'expo-router'
 import { Colors } from '../../constants/Colors'
 import GuestOnly from '../../components/auth/GuestOnly'
-import { useUser } from '../../hooks/useUser'
 
 const AuthLayout = () => {
     const colorScheme = useColorScheme()

@@ -23,10 +23,9 @@ const Login = () => {
         setError(null)
 
         try {
-            console.log('hello from submit')
             await login(email, password)
-            console.log('Current user is: ', user)
         } catch (error) {
+            console.log('Login error:', error.message)
             setError(error.message)
         }
     }
@@ -55,7 +54,7 @@ const Login = () => {
             <ThemedInput 
                 placeholder='Password'
                 style={{}}
-                onChange={setPassword}
+                onChangeText={setPassword}
                 value={password}
                 secureTextEntry 
             />
