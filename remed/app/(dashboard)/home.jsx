@@ -1,12 +1,20 @@
 import ThemedView from '../../components/ThemedView'
 import ThemedText from '../../components/ThemedText'
+import { StyleSheet } from 'react-native'
 
-const D = () => {
+const Home = () => {
   return (
-    <ThemedView>
-        <ThemedText title={true}>D page</ThemedText>
+    <ThemedView safe={true} style={styles.container}>
+        <ThemedText title={true}>Home page</ThemedText>
     </ThemedView>
   )
 }
 
-export default D
+export default Home
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'stretch'
+  },
+})

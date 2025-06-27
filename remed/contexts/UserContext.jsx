@@ -20,6 +20,7 @@ export const UserProvider = ({ children }) => {
         const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
             setSession(session)
             setUser(session?.user ?? null)
+            setAuthChecked(true)
         })
 
         return () => {
@@ -35,9 +36,9 @@ export const UserProvider = ({ children }) => {
 
         if (error) throw Error(error.message)
 
+        router.replace('/home')
         setUser(data.user)
         setSession(data.session)
-        router.replace('/(dashboard)/home')
     }
 
 
@@ -47,15 +48,12 @@ export const UserProvider = ({ children }) => {
             password: password,
         })
         if (error) throw Error(error.message)
-        console.log('Je suis sauvegarde en DB')
-        console.log('ma Data:', data)
-        // await login(email, password)
+         await login(email, password)
     }
 
     async function logout() {
         const { error } = await supabase.auth.signOut()
         if (error) throw Error(error.message)
-        console.log('User disconnected')
         router.replace('/')
     }
 

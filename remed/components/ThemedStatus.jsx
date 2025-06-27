@@ -1,0 +1,22 @@
+import { View, useColorScheme } from "react-native"
+import { Colors } from '../constants/Colors'
+import { useState } from "react"
+
+const ThemedStatus = ({ medTake= false, style, ...props }) => {
+    const colorScheme = useColorScheme()
+    const theme = Colors[colorScheme] ?? Colors.light
+
+    return (
+        <View 
+            style={[{ 
+                backgroundColor: medTake ? Colors.success : Colors.error,
+                width: 16,
+                height: 16,
+                borderRadius: 100
+            }, style ]}
+            {...props}
+        />    
+    )
+}
+
+export default ThemedStatus

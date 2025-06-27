@@ -19,7 +19,7 @@ const DashboardLayout = () => {
                   height: 90,
               },
               tabBarActiveTintColor: theme.iconColorFocused,
-              tabBarInactiveTintColor: theme.iconColor,
+              tabBarInactiveTintColor: theme.iconColorFocused
           }}
       >
           <Tabs.Screen name='home' options={{ title: 'Home', tabBarIcon: ({ focused }) => (

@@ -8,6 +8,8 @@ const UserOnly = ({ children }) => {
     const { authChecked, user } = useUser()
     const router = useRouter()
 
+    console.log(authChecked)
+    
     useEffect(() => {
         if (authChecked && user === null) {
             router.replace('/login')
@@ -15,7 +17,7 @@ const UserOnly = ({ children }) => {
     
     }, [authChecked, user])
     
-    if (!authChecked || user) {
+    if (!authChecked && user) {
         return <ThemedLoader />
     }
     

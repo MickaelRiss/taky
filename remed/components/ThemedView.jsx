@@ -21,7 +21,7 @@ const ThemedView = ({ style, safe = false, ...props }) => {
         <View 
             style={[{ 
                 backgroundColor: theme.background,
-                paddingTop: insets.top,
+                paddingTop: insets.top + 16,
                 paddingBottom: insets.bottom, 
             }, style ]}
             {...props}

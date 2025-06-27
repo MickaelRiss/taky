@@ -8,7 +8,6 @@ import ThemedButton from '../components/ThemedButton'
 
 const Home = () => {
   const { user, logout } = useUser()
-  console.log('Current user:', user)
 
   const handleLogout = async () => {
     logout()
@@ -23,10 +22,11 @@ const Home = () => {
       { user === null ? 
         <Link href="/login" style={styles.link}>Login Page</Link>
         : 
-        <ThemedButton width='40%'>
-          <ThemedText onPress={handleLogout}>Logout</ThemedText>
+        <ThemedButton width='40%' onPress={handleLogout}>
+          <ThemedText>Logout</ThemedText>
         </ThemedButton>
       }
+      <Link href="/home" style={styles.link}>Home Page</Link>
 
     </ThemedView>
   )

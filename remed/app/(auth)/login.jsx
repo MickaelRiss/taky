@@ -1,6 +1,6 @@
 import { StyleSheet, TouchableWithoutFeedback, Keyboard, Text, View, useColorScheme, Alert } from "react-native"
 import { useState } from "react"
-import { Link } from "expo-router"
+import { Link, useRouter } from "expo-router"
 import { Colors } from '../../constants/Colors'
 import { useUser } from '../../hooks/useUser'
 import ThemedLogo from "../../components/ThemedLogo"
@@ -18,12 +18,14 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [error, setError] = useState(null)
     const { user, login } = useUser()
+    const router = useRouter()
 
-    const handleLogin = async () => {
+        const handleLogin = async () => {
         setError(null)
 
         try {
             await login(email, password)
+            router.replace('/home')
         } catch (error) {
             console.log('Login error:', error.message)
             setError(error.message)
