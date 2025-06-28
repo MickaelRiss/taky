@@ -1,8 +1,8 @@
 import { View, useColorScheme } from "react-native"
-import { Colors } from '../constants/Colors'
+import { Colors } from '../../constants/Colors'
 import { useState } from "react"
 
-const ThemedStatus = ({ medTake= false, style, ...props }) => {
+const Status = ({ medTake= false, style, ...props }) => {
     const colorScheme = useColorScheme()
     const theme = Colors[colorScheme] ?? Colors.light
 
@@ -19,4 +19,4 @@ const ThemedStatus = ({ medTake= false, style, ...props }) => {
     )
 }
 
-export default ThemedStatus
+export default Status

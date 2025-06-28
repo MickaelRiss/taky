@@ -25,14 +25,14 @@ const DashboardLayout = () => {
           <Tabs.Screen name='home' options={{ title: 'Home', tabBarIcon: ({ focused }) => (
               <Ionicons 
                   size={24}
-                  name={focused ? 'book' : 'book-outline' }
+                  name={focused ? 'calendar-number' : 'calendar-number-outline' }
                   color={focused ? theme.iconColorFocused : theme.iconColor}
               />
           )}}/>
           <Tabs.Screen name='meds' options={{ title: 'Meds', tabBarIcon: ({ focused }) => (
               <Ionicons 
                   size={24}
-                  name={focused ? 'add-circle' : 'add-circle-outline'}
+                  name={focused ? 'medical' : 'medical-outline'}
                   color={focused ? theme.iconColorFocused : theme.iconColor}
               />
           )}}/>
@@ -46,7 +46,7 @@ const DashboardLayout = () => {
           <Tabs.Screen name='settings' options={{ title: 'Settings', tabBarIcon: ({ focused }) => (
               <Ionicons 
                   size={24}
-                  name={focused ? 'add-circle' : 'add-circle-outline'}
+                  name={focused ? 'settings' : 'settings-outline'}
                   color={focused ? theme.iconColorFocused : theme.iconColor}
               />
           )}}/>

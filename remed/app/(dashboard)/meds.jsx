@@ -2,7 +2,8 @@ import ThemedView from '../../components/ThemedView'
 import ThemedText from '../../components/ThemedText'
 import ThemedInput from '../../components/ThemedInput'
 import Spacer from '../../components/Spacer'
-import ThemedStatus from '../../components/ThemedStatus'
+import ThemedStatus from '../../components/meds/Status'
+import ThemedCard from '../../components/meds/ThemedCard'
 import { StyleSheet, useColorScheme, Pressable, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { Colors } from '../../constants/Colors'
@@ -64,38 +65,17 @@ const Meds = () => {
           </ThemedText>
           <Spacer height={20} />
 
-          <ThemedView style={{ marginHorizontal: 30 }}>
-            <ThemedView style={{ 
-              flexDirection: 'row', 
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              marginTop: 10
-            }}>
-              <ThemedText title={true} style={{ fontSize: 16 }}>Aspirin</ThemedText>
-              <ThemedStatus />
-            </ThemedView>
+          <ThemedCard />
+          <Spacer height={20} />
 
-            <ThemedView style={{ 
-              flexDirection: 'row', 
-              alignItems: 'center',
-              marginTop: 10,
-              gap: 10
-            }}>
-              <ThemedText style={{ fontSize: 12 }}>81mg</ThemedText>
-              
-              <ThemedText style={{ fontSize: 12 }}
-              >
-                <Ionicons
-                  size={12}
-                  name={'time-outline'}
-                  color={theme.text}
-                />
-                81mg
-              </ThemedText>
-              
-              <ThemedText style={{ fontSize: 12 }}>81mg</ThemedText>
-            </ThemedView>
-          </ThemedView>
+          <ThemedCard />
+          <Spacer height={20} />
+
+          <ThemedCard />
+          <Spacer height={20} />
+
+          <ThemedCard />
+          <Spacer height={20} />
 
       </ThemedView> 
     </TouchableWithoutFeedback>
