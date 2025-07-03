@@ -3,11 +3,11 @@ import ThemedText from "../ThemedText"
 import Status from "./Status"
 import { Ionicons } from "@expo/vector-icons"
 import { Colors } from "../../constants/Colors"
-import { useColorScheme } from "react-native"
+import { useTheme } from "../../contexts/ThemeContext"
 
 const ThemedCard = ({ style, ...props }) => {
-    const colorScheme = useColorScheme()
-    const theme = Colors[colorScheme] ?? Colors.light
+    const { theme } = useTheme()
+    const colorTheme = Colors[theme] ?? Colors.light
     
     return (
         <ThemedView style={{ marginHorizontal: 30 }}>
@@ -34,7 +34,7 @@ const ThemedCard = ({ style, ...props }) => {
                 <Ionicons
                     size={12}
                     name={'time-outline'}
-                    color={theme.text}
+                    color={colorTheme.text}
                 />
                 81mg
                 </ThemedText>

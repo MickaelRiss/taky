@@ -2,16 +2,13 @@ import ThemedView from '../../components/ThemedView'
 import ThemedText from '../../components/ThemedText'
 import ThemedInput from '../../components/ThemedInput'
 import Spacer from '../../components/Spacer'
-import ThemedStatus from '../../components/meds/Status'
 import ThemedCard from '../../components/meds/ThemedCard'
-import { StyleSheet, useColorScheme, Pressable, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { StyleSheet, Pressable, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { Colors } from '../../constants/Colors'
 import { useState } from 'react'
 
 const Meds = () => {
-  const colorScheme = useColorScheme()
-  const theme = Colors[colorScheme] ?? Colors.light
   const [pressed, setPressed] = useState(false)
   const [med, setMed] = useState(null)
 
@@ -99,6 +96,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 16
+    fontSize: 16,
+    backgroundColor: '#f2f2f2'
   }
 })

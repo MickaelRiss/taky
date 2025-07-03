@@ -17,7 +17,7 @@ export const Colors = {
     shadow: 'rgba(0, 0, 0, 0.05)',
     navBackground: '#FFFFFF', 
     iconColor: '#BDBDBD',
-    iconColorFocused: '#45A075',
+    iconColorFocused: '#45A075'
   },
 
   // Dark theme
@@ -33,6 +33,6 @@ export const Colors = {
     shadow: 'rgba(0, 0, 0, 0.4)',
     navBackground: '#1F2A32',       
     iconColor: '#6B7A89', 
-    iconColorFocused: '#7ED6A6', 
+    iconColorFocused: '#7ED6A6' 
   }
 };

@@ -1,10 +1,8 @@
-import { View, useColorScheme } from "react-native"
+import { View } from "react-native"
 import { Colors } from '../../constants/Colors'
 import { useState } from "react"
 
 const Status = ({ medTake= false, style, ...props }) => {
-    const colorScheme = useColorScheme()
-    const theme = Colors[colorScheme] ?? Colors.light
 
     return (
         <View 

@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import { Colors } from '../constants/Colors'
-import { Pressable, StyleSheet, useColorScheme } from 'react-native'
+import { Pressable, StyleSheet } from 'react-native'
 
 const ThemedButton = ({ width = '20%', style, ...props}) => {
-    const colorScheme = useColorScheme()
-    const theme = Colors[colorScheme] ?? Colors.light
     const [pressed, setPressed] = useState(false)
     
     return (
