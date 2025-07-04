@@ -14,7 +14,7 @@ export const Colors = {
     placeholder: '#2C2C2C',       
     inputBackground: '#F2F2F2',   
     icon: '#BDBDBD',              
-    shadow: 'rgba(0, 0, 0, 0.05)',
+    shadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
     navBackground: '#FFFFFF', 
     iconColor: '#BDBDBD',
     iconColorFocused: '#45A075'
@@ -28,9 +28,9 @@ export const Colors = {
     title: '#F2F2F2',             
     text: '#AAB8C2',              
     placeholder: '#F2F2F2',       
-    inputBackground: '#2B3A45',   
-    icon: '#6B7A89',              
-    shadow: 'rgba(0, 0, 0, 0.4)',
+    inputBackground: '#1F2A32',   
+    icon: '#6B7A89',
+    shadow: 'rgba(0, 0, 0, 0.6) 0px 8px 24px',
     navBackground: '#1F2A32',       
     iconColor: '#6B7A89', 
     iconColorFocused: '#7ED6A6' 

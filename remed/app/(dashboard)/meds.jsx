@@ -50,6 +50,7 @@ const Meds = () => {
             />
             <ThemedInput 
                 placeholder='Search medications...'
+                placeholderTextColor="#BDBDBD"
                 style={styles.input} 
                 onChangeText={setMed}
                 value={med}
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'stretch',
-    padding: 16
+    paddingHorizontal: 20
   },
   inputWrapper: {
     flexDirection: 'row',

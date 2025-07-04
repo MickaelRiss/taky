@@ -10,10 +10,11 @@ import ThemedText from "../../components/ThemedText"
 import Spacer from "../../components/Spacer"
 import ThemedInput from "../../components/ThemedInput"
 import ThemedButton from "../../components/ThemedButton"
+import { useTheme } from "../../contexts/ThemeContext"
 
 const Register = () => {
-    const colorScheme = useColorScheme()
-    const theme = Colors[colorScheme] ?? Colors.light
+    const { theme } = useTheme()
+    const themeColor = Colors[theme] ?? Colors.light
     const themePrimary = Colors.primary
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -57,12 +58,14 @@ const Register = () => {
             }}>
               <ThemedInput 
                 placeholder='John'
+                placeholderTextColor='#6B7A89'
                 style={{flex: 1 }} 
                 onChangeText={setFirstName}
                 value={firstName}
               />
               <ThemedInput 
                 placeholder='Doe'
+                placeholderTextColor='#6B7A89'
                 style={{flex: 1 }} 
                 onChangeText={setLastName}
                 value={lastName}
@@ -72,6 +75,7 @@ const Register = () => {
 
             <ThemedInput 
                 placeholder='Email'
+                placeholderTextColor='#6B7A89'
                 style={{}} 
                 keyboardType='email-address'
                 onChangeText={setEmail}
@@ -81,6 +85,7 @@ const Register = () => {
 
             <ThemedInput 
                 placeholder='Password'
+                placeholderTextColor='#6B7A89'
                 style={{}}
                 onChangeText={setPassword}
                 value={password}
@@ -106,15 +111,15 @@ const Register = () => {
                 <View style={{
                     flex: 1,
                     height: 1,
-                    backgroundColor: theme.title,
+                    backgroundColor: themeColor.title,
                     opacity: 0.2,
                     marginRight: 24
                 }} />
-                <Text style={{ color: theme.title }}>or</Text>
+                <Text style={{ color: themeColor.title }}>or</Text>
                 <View style={{
                     flex: 1,
                     height: 1,
-                    backgroundColor: theme.title,
+                    backgroundColor: themeColor.title,
                     opacity: 0.2,
                     marginLeft: 24
                 }} />
@@ -122,7 +127,7 @@ const Register = () => {
             <Spacer height={30}/>
             <Link href='/login' asChild>
               <ThemedButton style={{ 
-                  backgroundColor: theme.background,
+                  backgroundColor: themeColor.background,
                   borderWidth: 1,
                   borderColor: themePrimary,
               }}>

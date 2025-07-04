@@ -1,5 +1,6 @@
-import { StyleSheet, TouchableWithoutFeedback, Keyboard, Text, View, useColorScheme, Alert } from "react-native"
+import { StyleSheet, TouchableWithoutFeedback, Keyboard, Text, View } from "react-native"
 import { useState } from "react"
+import { useTheme } from "../../contexts/ThemeContext"
 import { Link, useRouter } from "expo-router"
 import { Colors } from '../../constants/Colors'
 import { useUser } from '../../hooks/useUser'
@@ -11,8 +12,8 @@ import ThemedInput from "../../components/ThemedInput"
 import ThemedButton from "../../components/ThemedButton"
 
 const Login = () => {
-    const colorScheme = useColorScheme()
-    const theme = Colors[colorScheme] ?? Colors.light
+    const { theme } = useTheme()
+    const themeColor = Colors[theme] ?? Colors.light
     const themePrimary = Colors.primary
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -20,7 +21,7 @@ const Login = () => {
     const { user, login } = useUser()
     const router = useRouter()
 
-        const handleLogin = async () => {
+    const handleLogin = async () => {
         setError(null)
 
         try {
@@ -46,7 +47,7 @@ const Login = () => {
             
             <ThemedInput 
                 placeholder='Email'
-                style={{}} 
+                placeholderTextColor="#6B7A89" 
                 keyboardType='email-address'
                 onChangeText={setEmail}
                 value={email}
@@ -55,7 +56,7 @@ const Login = () => {
 
             <ThemedInput 
                 placeholder='Password'
-                style={{}}
+                placeholderTextColor="#6B7A89"
                 onChangeText={setPassword}
                 value={password}
                 secureTextEntry 
@@ -83,15 +84,15 @@ const Login = () => {
                 <View style={{
                     flex: 1,
                     height: 1,
-                    backgroundColor: theme.title,
+                    backgroundColor: themeColor.title,
                     opacity: 0.2,
                     marginRight: 24
                 }} />
-                <Text style={{ color: theme.title }}>or</Text>
+                <Text style={{ color: themeColor.title }}>or</Text>
                 <View style={{
                     flex: 1,
                     height: 1,
-                    backgroundColor: theme.title,
+                    backgroundColor: themeColor.title,
                     opacity: 0.2,
                     marginLeft: 24
                 }} />
@@ -100,7 +101,7 @@ const Login = () => {
 
             <Link href='/register' asChild>
                 <ThemedButton style={{ 
-                        backgroundColor: theme.background,
+                        backgroundColor: themeColor.background,
                         borderWidth: 1,
                         borderColor: themePrimary,
                     }}
