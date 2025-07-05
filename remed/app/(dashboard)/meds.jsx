@@ -1,4 +1,4 @@
-import { StyleSheet, Pressable, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { StyleSheet, Pressable, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { useState } from 'react'
 import { Colors } from '../../constants/Colors'
@@ -24,6 +24,10 @@ const Meds = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView safe={true} style={styles.container}>
+        <ScrollView           
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+        >
           <ThemedView style={{ 
             flexDirection: 'row', 
             alignItems: 'center',
@@ -82,7 +86,7 @@ const Meds = () => {
 
           <ThemedCard />
           <Spacer height={20} />
-
+        </ScrollView>       
       </ThemedView> 
     </TouchableWithoutFeedback>
   )

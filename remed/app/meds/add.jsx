@@ -33,7 +33,7 @@ const AddMedication = () => {
       >
         <ThemedView style={{ flex: 1 }}>
           <ScrollView
-            contentContainerStyle={{ padding: 20, paddingBottom: 60 }}
+            contentContainerStyle={{ padding: 20, paddingVertical: 40 }}
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
           >
@@ -81,32 +81,6 @@ const AddMedication = () => {
                 options={['Daily', 'Weekly', 'Monthly']}
                 onChange={(value) => setMed(value)}
               />
-            </View>
-            <Spacer height={30}/>
-
-            <View style={{ gap: 14 }}>
-              <ThemedText title={true} style={{ fontWeight: 600 }}>Dosage</ThemedText>
-              <View style={{ flexDirection: 'row', gap: 20 }}>
-                <ThemedInput 
-                  placeholder='Amount'
-                  placeholderTextColor="#6B7A89" 
-                  style={{ flex: 1 }}
-                  onChangeText={setMed}
-                  value={med.dose} 
-                />
-                <View style={{ 
-                  backgroundColor: 'red',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: 14, 
-                  borderRadius: 12,
-                  backgroundColor: colorTheme.inputBackground, 
-                }}>
-                  <ThemedText title={true}>
-                    mg
-                  </ThemedText>
-                </View>
-              </View>
             </View>
             <Spacer height={30}/>
 
