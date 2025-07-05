@@ -1,13 +1,16 @@
 import { Stack } from 'expo-router'
+import { MedicationsProvider } from '../../contexts/MedicationsContext'
 
 const MedsStackLayout = () => {
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        title: 'Ajouter un médicament',
-      }}
-    />
+    <MedicationsProvider>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          title: 'Ajouter un médicament',
+        }}
+      />
+    </MedicationsProvider>
   )
 }
 

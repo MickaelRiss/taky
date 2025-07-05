@@ -1,14 +1,11 @@
 import { useRouter } from 'expo-router'
 import { StyleSheet, Pressable, TouchableWithoutFeedback, Keyboard, View, Text, KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
 import { Colors } from '../../constants/Colors'
 import { useMedications } from '../../hooks/useMedications'
 import ThemedView from '../../components/ThemedView'
 import ThemedText from '../../components/ThemedText'
 import ThemedInput from '../../components/ThemedInput'
 import Spacer from '../../components/Spacer'
-import ThemedCard from '../../components/meds/ThemedCard'
-import ThemedLoader from '../../components/ThemedLoader'
 import ThemedButton from '../../components/ThemedButton'
 import FrequencySelector from '../../components/meds/FrequencySelector'
 import TimeSelector from '../../components/meds/TimeSelector'
@@ -17,12 +14,19 @@ import { useTheme } from '../../contexts/ThemeContext'
 
 const AddMedication = () => {
   const { theme } = useTheme()
+  const router = useRouter()
   const colorTheme = Colors[theme] ?? Colors.light
   const [med, setMed] = useState({})
   const [frequency, setFrequency] = useState(null)
+  const { addMedication } = useMedications()
 
-  const handleSubmit = () => {
-    console.log('hello de subnit')
+  const handleSubmit = async () => {
+    try {
+      await addMedication(med)
+      router.back()
+    } catch (error) {
+      console.error('Erreur à l’ajout du médicament:', error.message)
+    }
   }
 
   return (
@@ -43,8 +47,8 @@ const AddMedication = () => {
               <ThemedInput 
                 placeholder='Enter medication name'
                 placeholderTextColor="#6B7A89" 
-                onChangeText={setMed}
-                value={med.name} 
+                onChangeText={(value) => setMed({ ...med, name: value })}
+                value={ med.name || '' } 
               />
             </View>
             <Spacer height={30}/>
@@ -56,8 +60,8 @@ const AddMedication = () => {
                   placeholder='Amount'
                   placeholderTextColor="#6B7A89" 
                   style={{ flex: 1 }}
-                  onChangeText={setMed}
-                  value={med.dose} 
+                  onChangeText={(value) => setMed({...med, dose: value })}
+                  value={med.dose || ''} 
                 />
                 <View style={{ 
                   backgroundColor: 'red',
@@ -79,7 +83,7 @@ const AddMedication = () => {
               <ThemedText title={true} style={{ fontWeight: 600 }}>Frequency</ThemedText>
               <FrequencySelector
                 options={['Daily', 'Weekly', 'Monthly']}
-                onChange={(value) => setMed(value)}
+                onChange={(value) => setMed({ ...med, frequency: value })}
               />
             </View>
             <Spacer height={30}/>
@@ -100,8 +104,8 @@ const AddMedication = () => {
                 placeholderTextColor="#6B7A89" 
                 multiline
                 numberOfLines={4}
-                onChangeText={setMed}
-                value={med.name} 
+                onChangeText={(value) => setMed({...med, dose: value })}
+                value={med.notes || ''} 
                 style={styles.note}
               />
             </View>

@@ -1,6 +1,6 @@
 import { StyleSheet, Pressable, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Colors } from '../../constants/Colors'
 import { useMedications } from '../../hooks/useMedications'
 import { useRouter } from 'expo-router'
@@ -14,12 +14,17 @@ import ThemedLoader from '../../components/ThemedLoader'
 const Meds = () => {
   const router = useRouter()
   const [pressed, setPressed] = useState(false)
-  const { medications, loading, addMedication } = useMedications()
+  const { medications, loading, fetchMedications } = useMedications()
   const [med, setMed] = useState(null)
 
-  if (loading) return <ThemedLoader />
-
-  console.log('Voici medications:', medications)
+  useEffect(() => {
+    const load = async () => {
+      await fetchMedications()
+      console.log('Voici medications:', medications)
+      console.log('First med: ', medications[0])
+    }
+    load()
+  }, [])
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
