@@ -1,32 +1,41 @@
+import { StyleSheet, Pressable, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+import { useState } from 'react'
+import { Colors } from '../../constants/Colors'
+import { useMedications } from '../../hooks/useMedications'
+import { useRouter } from 'expo-router'
 import ThemedView from '../../components/ThemedView'
 import ThemedText from '../../components/ThemedText'
 import ThemedInput from '../../components/ThemedInput'
 import Spacer from '../../components/Spacer'
 import ThemedCard from '../../components/meds/ThemedCard'
-import { StyleSheet, Pressable, TouchableWithoutFeedback, Keyboard } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
-import { Colors } from '../../constants/Colors'
-import { useState } from 'react'
+import ThemedLoader from '../../components/ThemedLoader'
 
 const Meds = () => {
+  const router = useRouter()
   const [pressed, setPressed] = useState(false)
+  const { medications, loading, addMedication } = useMedications()
   const [med, setMed] = useState(null)
+
+  if (loading) return <ThemedLoader />
+
+  console.log('Voici medications:', medications)
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView safe={true} style={styles.container}>
           <ThemedView style={{ 
-              flexDirection: 'row', 
-              alignItems: 'center',
-              justifyContent: 'space-between'
-            }}>
+            flexDirection: 'row', 
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}>
             <ThemedText title={true} style={{ fontSize: 24, fontWeight: 'bold' }}>
               Medications
             </ThemedText>
             <Pressable
               onPress={() => {
                 setPressed(true)
-                console.log('PRESSED')
+                router.push('/meds/add')
               }}
               style={({ pressed }) => [
                 pressed && { opacity: 0.8 }
@@ -38,7 +47,6 @@ const Meds = () => {
                 color={Colors.primary}
               />
             </Pressable>
-
           </ThemedView>
           <Spacer height={32}/>
 
