@@ -52,6 +52,7 @@ const DashboardLayout = () => {
                             color={focused ? colorTheme.iconColorFocused : colorTheme.iconColor}
                         />
                     )}}/>
+                    <Tabs.Screen name='med/[id]' options={{ href: null }}/>
                 </Tabs>
             </MedicationsProvider>
         </UserOnly>

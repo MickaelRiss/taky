@@ -1,4 +1,4 @@
-import { StyleSheet, Pressable, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native'
+import { StyleSheet, Pressable, TouchableWithoutFeedback, Keyboard, ScrollView, FlatList } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { useEffect, useState } from 'react'
 import { Colors } from '../../constants/Colors'
@@ -20,19 +20,17 @@ const Meds = () => {
   useEffect(() => {
     const load = async () => {
       await fetchMedications()
+      setMed(medications[0])
       console.log('Voici medications:', medications)
-      console.log('First med: ', medications[0])
     }
     load()
   }, [])
+  
+  if (loading) return <ThemedLoader />
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView safe={true} style={styles.container}>
-        <ScrollView           
-          showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled"
-        >
           <ThemedView style={{ 
             flexDirection: 'row', 
             alignItems: 'center',
@@ -79,19 +77,20 @@ const Meds = () => {
             Current medications
           </ThemedText>
           <Spacer height={20} />
-
-          <ThemedCard />
-          <Spacer height={20} />
-
-          <ThemedCard />
-          <Spacer height={20} />
-
-          <ThemedCard />
-          <Spacer height={20} />
-
-          <ThemedCard />
-          <Spacer height={20} />
-        </ScrollView>       
+          
+          {medications ? (
+            <FlatList 
+              data={medications}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+                <Pressable onPress={() => { router.push(`/med/${item.id}`) }} >
+                  <ThemedCard med={item} />
+                </Pressable>
+              )}
+            />
+          ) : (
+            <ThemedText>No medication selected.</ThemedText>
+          )}
       </ThemedView> 
     </TouchableWithoutFeedback>
   )
